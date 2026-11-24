@@ -214,24 +214,11 @@ body {
   animation: mistletoe-jingle 0.52s ease;
 }
 
-.mistletoe-hint {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(232, 196, 104, 0.85);
-  transition: color 0.2s ease;
-}
-
-.mistletoe-btn:hover .mistletoe-hint {
-  color: var(--snow-white);
-}
-
 .mistletoe-pop {
   position: relative;
-  margin-top: 0.5rem;
+  margin-top: 0.45rem;
   margin-bottom: 0.35rem;
-  max-width: 540px;
+  max-width: 520px;
   width: 100%;
   background: var(--letter-paper);
   color: var(--ink-dark);
@@ -286,29 +273,6 @@ body {
   border: 1px solid rgba(166, 36, 40, 0.28);
   border-radius: 999px;
   padding: 0.12rem 0.58rem;
-}
-
-.mistletoe-pop-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.mistletoe-next-btn {
-  background: var(--xmas-green);
-  color: #ffffff;
-  border: none;
-  border-radius: 999px;
-  padding: 0.2rem 0.65rem;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.18s ease;
-}
-
-.mistletoe-next-btn:hover {
-  background: var(--xmas-green-dark);
 }
 
 .mistletoe-close-btn {

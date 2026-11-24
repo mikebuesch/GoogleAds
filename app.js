@@ -1358,9 +1358,7 @@ function setupMistletoeEasterEgg() {
   const pop = document.getElementById('mistletoe-pop');
   const tagEl = document.getElementById('mistletoe-pop-tag');
   const textEl = document.getElementById('mistletoe-pop-text');
-  const nextBtn = document.getElementById('mistletoe-next-btn');
   const closeBtn = document.getElementById('mistletoe-close-btn');
-  const hintEl = document.getElementById('mistletoe-hint');
 
   if (!btn || !pop || !tagEl || !textEl) return;
 
@@ -1390,7 +1388,6 @@ function setupMistletoeEasterEgg() {
     textEl.textContent = item.text;
     pop.hidden = false;
     btn.setAttribute('aria-expanded', 'true');
-    if (hintEl) hintEl.textContent = '✦ Click mistletoe for another ✦';
 
     btn.classList.remove('is-bouncing');
     void btn.offsetWidth;
@@ -1401,13 +1398,6 @@ function setupMistletoeEasterEgg() {
   };
 
   btn.addEventListener('click', showNewMistletoeMessage);
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      showNewMistletoeMessage();
-    });
-  }
 
   if (closeBtn) {
     closeBtn.addEventListener('click', (e) => {
