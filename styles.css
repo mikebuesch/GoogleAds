@@ -1,0 +1,1730 @@
+/* ==========================================================================
+   Barcelona Christmas Advent Calendar — Traditional Numbered Xmas Doors
+   & Authentic Christmas Letter Modal (with Holiday Recipes)
+   ========================================================================== */
+
+:root {
+  /* Deep Cozy Christmas Pine & Berry Night */
+  --night-pine-deep: #0b1c15;
+  --night-pine-mid: #132d22;
+  --board-border: rgba(232, 196, 104, 0.45);
+
+  /* Classic Christmas Colors */
+  --xmas-red: #a62428;
+  --xmas-red-dark: #78161a;
+  --xmas-green: #1d563c;
+  --xmas-green-dark: #123927;
+  --xmas-cream: #fbf5e8;
+  --xmas-blue: #1e4168;
+  --xmas-ginger: #99591f;
+
+  --gold-foil: #e8c468;
+  --gold-deep: #b58629;
+  --snow-white: #fdfbf7;
+  --snow-soft: #dfeae3;
+  --snow-muted: #abc0b4;
+
+  /* Christmas Letter Stationery Palette */
+  --letter-paper: #fcf7eb;
+  --letter-paper-warm: #f5ecda;
+  --letter-lines: rgba(180, 158, 122, 0.14);
+  --ink-dark: #1e2d24;
+  --ink-body: #33443a;
+  --ink-muted: #64756b;
+  --paper-rule: #dfd0b4;
+
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--snow-white);
+  background-color: var(--night-pine-deep);
+  background-image:
+    radial-gradient(ellipse 85% 48% at 50% -4%, rgba(166, 36, 40, 0.24) 0%, transparent 62%),
+    radial-gradient(circle at 15% 25%, rgba(232, 196, 104, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 85% 35%, rgba(29, 86, 60, 0.22) 0%, transparent 48%),
+    linear-gradient(180deg, var(--night-pine-mid) 0%, var(--night-pine-deep) 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+#snow-canvas,
+#sparkle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#snow-canvas {
+  z-index: 40;
+}
+
+#sparkle-canvas {
+  z-index: 95;
+}
+
+/* ==========================================================================
+   Hanging Christmas String Lights
+   ========================================================================== */
+
+.christmas-garland-top {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+
+.christmas-garland-top svg {
+  width: 100%;
+  min-width: 760px;
+  height: 48px;
+  display: block;
+}
+
+@keyframes bulb-twinkle {
+  0%, 100% { opacity: 0.96; }
+  50% { opacity: 0.55; }
+}
+
+.bulb-glow-a {
+  animation: bulb-twinkle 3.2s ease-in-out infinite;
+}
+
+.bulb-glow-b {
+  animation: bulb-twinkle 3.8s ease-in-out 1.5s infinite;
+}
+
+.admin-banner {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--xmas-red-dark);
+  border-bottom: 1.5px solid var(--gold-foil);
+  padding: 0.55rem 1.25rem;
+}
+
+.admin-banner[hidden] {
+  display: none;
+}
+
+.admin-banner-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--snow-white);
+}
+
+/* ==========================================================================
+   Main Header
+   ========================================================================== */
+
+.page-shell {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.4rem 3.8rem;
+}
+
+.hero-header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 1.9rem;
+}
+
+.mistletoe-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.55rem;
+}
+
+.mistletoe-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0.65rem;
+  border-radius: 14px;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mistletoe-btn svg {
+  width: 84px;
+  height: 48px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.42));
+  transform-origin: top center;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mistletoe-btn:hover svg {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.mistletoe-btn:focus-visible {
+  outline: 2px solid var(--gold-foil);
+  outline-offset: 3px;
+}
+
+@keyframes mistletoe-jingle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.12); }
+  55% { transform: rotate(8deg) scale(1.1); }
+  80% { transform: rotate(-4deg) scale(1.04); }
+}
+
+.mistletoe-btn.is-bouncing svg {
+  animation: mistletoe-jingle 0.52s ease;
+}
+
+.mistletoe-hint {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232, 196, 104, 0.85);
+  transition: color 0.2s ease;
+}
+
+.mistletoe-btn:hover .mistletoe-hint {
+  color: var(--snow-white);
+}
+
+.mistletoe-pop {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+  max-width: 540px;
+  width: 100%;
+  background: var(--letter-paper);
+  color: var(--ink-dark);
+  border: 2px solid var(--gold-foil);
+  border-radius: 16px;
+  padding: 0.78rem 1rem 0.85rem;
+  text-align: left;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.55),
+    inset 0 0 18px rgba(181, 134, 41, 0.12);
+  animation: mistletoe-pop-in 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mistletoe-pop[hidden] {
+  display: none;
+}
+
+.mistletoe-pop::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--letter-paper);
+  border-top: 2px solid var(--gold-foil);
+  border-left: 2px solid var(--gold-foil);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+@keyframes mistletoe-pop-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mistletoe-pop-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.38rem;
+}
+
+.mistletoe-pop-tag {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--xmas-red);
+  background: rgba(166, 36, 40, 0.08);
+  border: 1px solid rgba(166, 36, 40, 0.28);
+  border-radius: 999px;
+  padding: 0.12rem 0.58rem;
+}
+
+.mistletoe-pop-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.mistletoe-next-btn {
+  background: var(--xmas-green);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.mistletoe-next-btn:hover {
+  background: var(--xmas-green-dark);
+}
+
+.mistletoe-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--paper-rule);
+  background: #ffffff;
+  color: var(--ink-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mistletoe-close-btn:hover {
+  background: var(--xmas-red);
+  border-color: var(--xmas-red);
+  color: #ffffff;
+}
+
+.mistletoe-pop-text {
+  font-family: var(--font-serif);
+  font-size: 0.94rem;
+  line-height: 1.48;
+  color: var(--ink-dark);
+}
+
+.hero-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-foil);
+  margin-bottom: 0.4rem;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.15rem, 4.4vw, 3.35rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--snow-white);
+  margin-bottom: 0.7rem;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.hero-title span {
+  color: var(--gold-foil);
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.94rem, 1.4vw, 1.03rem);
+  color: var(--snow-soft);
+  max-width: 640px;
+  margin: 0 auto 1.3rem;
+  line-height: 1.58;
+  opacity: 0.94;
+}
+
+.status-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem 1.15rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(18, 42, 32, 0.9);
+  border: 1px solid var(--board-border);
+  box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.52);
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.83rem;
+  color: var(--snow-soft);
+}
+
+.status-divider {
+  width: 1px;
+  height: 15px;
+  background: var(--board-border);
+}
+
+.progress-track {
+  width: 80px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #d63b3f,
+    #d63b3f 6px,
+    #faf4e6 6px,
+    #faf4e6 12px
+  );
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.progress-count {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--gold-foil);
+}
+
+.subtle-action-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--gold-foil);
+  border: 1px solid var(--board-border);
+  border-radius: 999px;
+  padding: 0.24rem 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.subtle-action-btn:hover {
+  background: rgba(232, 196, 104, 0.18);
+  border-color: var(--gold-foil);
+}
+
+/* ==========================================================================
+   Warm-Up Example Door Showcase (Above the 24-Door Calendar Board)
+   ========================================================================== */
+
+.example-showcase {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto 1.65rem;
+  background:
+    radial-gradient(circle at 86% 50%, rgba(232, 196, 104, 0.13) 0%, transparent 52%),
+    linear-gradient(155deg, rgba(28, 63, 48, 0.92) 0%, rgba(14, 34, 25, 0.96) 100%);
+  border: 2px solid rgba(232, 196, 104, 0.5);
+  border-radius: 24px;
+  padding: 1.35rem 1.65rem;
+  box-shadow:
+    0 20px 46px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13);
+}
+
+.example-showcase::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 18px;
+  border: 1px dashed rgba(232, 196, 104, 0.28);
+  pointer-events: none;
+}
+
+.example-showcase-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.example-context {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.example-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold-foil);
+  margin-bottom: 0.35rem;
+}
+
+.example-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.28rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--snow-white);
+  margin-bottom: 0.5rem;
+}
+
+.example-copy {
+  font-size: 0.9rem;
+  line-height: 1.58;
+  color: var(--snow-soft);
+  opacity: 0.95;
+  margin-bottom: 0.8rem;
+}
+
+.example-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.7rem;
+}
+
+.example-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--snow-soft);
+  background: rgba(11, 28, 21, 0.55);
+  border: 1px solid rgba(232, 196, 104, 0.3);
+  border-radius: 999px;
+  padding: 0.22rem 0.72rem;
+}
+
+.example-door-column {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.example-door-mount {
+  width: 162px;
+}
+
+.example-door-caption {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--gold-foil);
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Traditional Christmas Advent Calendar Board & Number-Only Closed Doors
+   ========================================================================== */
+
+.calendar-board {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(232, 196, 104, 0.09) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(25, 56, 43, 0.9) 0%, rgba(13, 31, 23, 0.95) 100%);
+  border: 2.5px solid rgba(232, 196, 104, 0.45);
+  border-radius: 26px;
+  padding: 1.55rem;
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.calendar-board::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 19px;
+  border: 1px dashed rgba(232, 196, 104, 0.28);
+  pointer-events: none;
+}
+
+.calendar-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.12rem;
+}
+
+.door-cell {
+  position: relative;
+  aspect-ratio: 1 / 1.08;
+  perspective: 1180px;
+}
+
+.door-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 14px;
+  transform-style: preserve-3d;
+  outline: none;
+}
+
+.door-button:focus-visible {
+  box-shadow: 0 0 0 3px var(--gold-foil), 0 0 0 6px var(--night-pine-deep);
+}
+
+/* Interior Alcove: Shows the Surprise Illustration ONLY Once Opened! */
+.door-interior {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: #231811;
+  border: 1.5px solid rgba(232, 196, 104, 0.65);
+  box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.82);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Keep surprise image hidden until the door is actually opened */
+.door-cell.is-opened .door-interior {
+  opacity: 1;
+}
+
+.interior-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.84) saturate(1.06);
+}
+
+.interior-overlay {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, transparent 0%, rgba(18, 12, 8, 0.86) 62%, rgba(18, 12, 8, 0.96) 100%);
+  padding: 1.2rem 0.5rem 0.55rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.interior-day {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gold-foil);
+}
+
+.interior-cta {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--snow-white);
+  background: var(--xmas-red);
+  padding: 0.16rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 196, 104, 0.55);
+}
+
+/* 3D Swinging Door Leaf */
+.door-leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease;
+  border-radius: 14px;
+  box-shadow:
+    0 10px 22px -6px rgba(0, 0, 0, 0.62),
+    0 3px 7px rgba(0, 0, 0, 0.4);
+}
+
+/* Left Brass Hinges */
+.door-leaf::before,
+.door-leaf::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  width: 4px;
+  height: 15px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #f3d788, #9b701f);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.door-leaf::before { top: 22%; }
+.door-leaf::after { bottom: 22%; }
+
+.door-front,
+.door-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Classic Advent Calendar Door Front: Number + Festive Christmas Filigree Only */
+.door-front {
+  border: 1.5px solid rgba(232, 196, 104, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.25s ease, filter 0.25s ease;
+}
+
+/* Soft Snow Cap at Top of Door */
+.door-snow-cap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.16) 80%, transparent 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Perforated Punch-Out Advent Window Frame */
+.door-front::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 9px;
+  border: 1.5px dashed rgba(248, 234, 194, 0.44);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Subtle Satin Gift-Ribbon Cross Lines Behind the Wreath */
+.door-ribbon-v,
+.door-ribbon-h {
+  position: absolute;
+  background: rgba(232, 196, 104, 0.13);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.door-ribbon-v {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 14px;
+  transform: translateX(-50%);
+  border-left: 1px solid rgba(232, 196, 104, 0.2);
+  border-right: 1px solid rgba(232, 196, 104, 0.2);
+}
+
+.door-ribbon-h {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 14px;
+  transform: translateY(-50%);
+  border-top: 1px solid rgba(232, 196, 104, 0.2);
+  border-bottom: 1px solid rgba(232, 196, 104, 0.2);
+}
+
+/* 5 Classic Christmas Door Palettes */
+.door-cell[data-palette="red"] .door-front {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(224, 68, 72, 0.35) 0%, transparent 68%),
+    linear-gradient(160deg, var(--xmas-red) 0%, var(--xmas-red-dark) 100%);
+}
+
+.door-cell[data-palette="green"] .door-front {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(56, 138, 97, 0.35) 0%, transparent 68%),
+    linear-gradient(160deg, var(--xmas-green) 0%, var(--xmas-green-dark) 100%);
+}
+
+.door-cell[data-palette="cream"] .door-front {
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 72%),
+    linear-gradient(160deg, var(--xmas-cream) 0%, #efe2c6 100%);
+  border-color: rgba(166, 36, 40, 0.45);
+}
+
+.door-cell[data-palette="cream"] .door-front::before {
+  border-color: rgba(166, 36, 40, 0.34);
+}
+
+.door-cell[data-palette="cream"] .door-ribbon-v,
+.door-cell[data-palette="cream"] .door-ribbon-h {
+  background: rgba(166, 36, 40, 0.08);
+  border-color: rgba(166, 36, 40, 0.16);
+}
+
+.door-cell[data-palette="blue"] .door-front {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(68, 126, 194, 0.35) 0%, transparent 68%),
+    linear-gradient(160deg, var(--xmas-blue) 0%, #142c47 100%);
+}
+
+.door-cell[data-palette="ginger"] .door-front {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(224, 148, 66, 0.32) 0%, transparent 68%),
+    linear-gradient(160deg, var(--xmas-ginger) 0%, #6e3d11 100%);
+}
+
+/* Center Christmas Wreath Ring + Big Advent Number */
+.door-medallion {
+  position: relative;
+  z-index: 3;
+  width: 78%;
+  height: 78%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-wreath-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.door-big-number {
+  position: relative;
+  z-index: 4;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.1vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--snow-white);
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.42);
+  letter-spacing: -0.02em;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.door-cell[data-palette="cream"] .door-big-number {
+  color: var(--xmas-red);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Delicate Corner Holly Stars */
+.door-corner {
+  position: absolute;
+  font-size: 0.65rem;
+  line-height: 1;
+  color: var(--gold-foil);
+  opacity: 0.85;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.door-cell[data-palette="cream"] .door-corner {
+  color: var(--xmas-green);
+}
+
+.door-corner--tl { top: 12px; left: 13px; }
+.door-corner--tr { top: 12px; right: 13px; }
+.door-corner--bl { bottom: 12px; left: 13px; }
+.door-corner--br { bottom: 12px; right: 13px; }
+
+/* Special Day 24 Extra Golden Glow */
+.door-cell[data-day="24"] .door-big-number {
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+}
+
+/* Day 0 Sneak Peek Medallion Stack ("0" + "Sneak Peek" inside the Christmas Wreath) */
+.door-example-stack {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.16rem;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.door-zero-number {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 2.7vw, 2.25rem);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--snow-white);
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.door-example-word {
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--gold-foil);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.door-cell.is-available:not(.is-opened) .door-button:hover .door-example-stack {
+  transform: scale(1.07);
+}
+
+/* Discrete Top-Right Padlock Badge for Future December Doors */
+.door-lock-pill {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: rgba(11, 28, 21, 0.56);
+  border: 1px solid rgba(232, 196, 104, 0.55);
+  color: var(--gold-foil);
+  pointer-events: none;
+}
+
+.door-cell[data-palette="cream"] .door-lock-pill {
+  background: rgba(166, 36, 40, 0.12);
+  border-color: rgba(166, 36, 40, 0.4);
+  color: var(--xmas-red);
+}
+
+.door-cell.is-locked .door-corner--tr {
+  display: none;
+}
+
+.door-cell.is-locked .door-front {
+  filter: saturate(0.92) brightness(0.95);
+}
+
+.door-cell.is-locked .door-button {
+  cursor: pointer;
+}
+
+.door-back {
+  transform: rotateY(180deg);
+  background: repeating-linear-gradient(
+    45deg,
+    #8b2226,
+    #8b2226 8px,
+    #6e181b 8px,
+    #6e181b 16px
+  );
+  border: 1.5px solid var(--gold-foil);
+}
+
+/* Hover & Swing-Open States */
+.door-cell.is-available:not(.is-opened) .door-button:hover .door-leaf {
+  transform: rotateY(-14deg) translateY(-3px);
+  box-shadow:
+    0 18px 32px -8px rgba(0, 0, 0, 0.78),
+    0 0 22px rgba(232, 196, 104, 0.28);
+}
+
+.door-cell.is-available:not(.is-opened) .door-button:hover .door-front {
+  border-color: var(--gold-foil);
+  filter: brightness(1.06);
+}
+
+.door-cell.is-available:not(.is-opened) .door-button:hover .door-big-number {
+  transform: scale(1.08);
+}
+
+.door-cell.is-available:not(.is-opened) .door-button:hover .door-wreath-svg {
+  transform: scale(1.04) rotate(3deg);
+}
+
+.door-cell.is-opened .door-leaf {
+  transform: rotateY(-108deg);
+  box-shadow: -8px 10px 20px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+
+@keyframes door-shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-7px) rotate(-1.6deg); }
+  40% { transform: translateX(6px) rotate(1.4deg); }
+  60% { transform: translateX(-5px) rotate(-1deg); }
+  80% { transform: translateX(4px) rotate(0.8deg); }
+}
+
+.door-cell.is-shaking {
+  animation: door-shake 0.5s ease;
+}
+
+.door-locked-popover {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  background: var(--xmas-red-dark);
+  color: var(--snow-white);
+  border: 1.5px solid var(--gold-foil);
+  border-radius: 12px;
+  padding: 0.36rem 0.72rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  line-height: 1.28;
+  width: max-content;
+  max-width: 185px;
+  white-space: normal;
+  text-align: center;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.58);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 30;
+  transition: opacity 0.2s ease;
+}
+
+.door-cell.show-popover .door-locked-popover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   AUTHENTIC CHRISTMAS LETTER MODAL ("Posta de Nadal")
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(6, 15, 11, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-letter-envelope {
+  position: relative;
+  width: 100%;
+  max-width: 690px;
+  max-height: min(92vh, 900px);
+  border-radius: 20px;
+  padding: 9px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #a82428 0px,
+    #a82428 13px,
+    #fcf7eb 13px,
+    #fcf7eb 24px,
+    #1d563c 24px,
+    #1d563c 37px,
+    #fcf7eb 37px,
+    #fcf7eb 48px
+  );
+  box-shadow:
+    0 32px 76px rgba(0, 0, 0, 0.8),
+    0 0 0 1.5px rgba(232, 196, 104, 0.65);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(14px) scale(0.975);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-backdrop.is-open .modal-letter-envelope {
+  transform: translateY(0) scale(1);
+}
+
+.modal-letter-paper {
+  position: relative;
+  width: 100%;
+  overflow-y: auto;
+  border-radius: 13px;
+  background-color: var(--letter-paper);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.75) 0%, transparent 65%),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 29px,
+      var(--letter-lines) 29px,
+      var(--letter-lines) 30px
+    );
+  border: 1px solid #d7c39e;
+  box-shadow: inset 0 0 32px rgba(168, 134, 82, 0.14);
+  color: var(--ink-dark);
+  padding: 1.35rem 1.65rem 1.45rem;
+  scrollbar-width: thin;
+  scrollbar-color: #cbb692 transparent;
+}
+
+.letter-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.letter-airmail-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--xmas-red);
+  border: 1.5px solid rgba(166, 36, 40, 0.4);
+  background: rgba(166, 36, 40, 0.06);
+  padding: 0.22rem 0.65rem;
+  border-radius: 4px;
+}
+
+.modal-nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.modal-step-btn {
+  height: 30px;
+  padding: 0 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--paper-rule);
+  background: #ffffff;
+  color: var(--ink-dark);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.modal-step-btn:hover:not(:disabled) {
+  background: var(--letter-paper-warm);
+  border-color: var(--gold-deep);
+}
+
+.modal-step-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.modal-close-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--paper-rule);
+  background: #ffffff;
+  color: var(--ink-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--xmas-red);
+  border-color: var(--xmas-red);
+  color: #ffffff;
+}
+
+.letter-top-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.letter-salutation-group {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.letter-dear-line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--xmas-red);
+  margin-bottom: 0.18rem;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.4vw, 1.62rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink-dark);
+}
+
+.letter-postal-cluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.letter-postmark {
+  width: 64px;
+  height: 64px;
+  margin-right: -12px;
+  transform: rotate(-11deg);
+  opacity: 0.72;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.letter-stamp {
+  position: relative;
+  width: 56px;
+  height: 66px;
+  background: #ffffff;
+  padding: 5px;
+  border: 2px dotted #cbb894;
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(28, 45, 36, 0.14);
+  transform: rotate(3deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-stamp-inner {
+  flex: 1;
+  background: linear-gradient(165deg, var(--xmas-green) 0%, var(--xmas-green-dark) 100%);
+  border: 1px solid var(--gold-foil);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px;
+  color: var(--snow-white);
+}
+
+.stamp-top-label {
+  font-size: 0.46rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-foil);
+}
+
+.stamp-star {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--gold-foil);
+}
+
+.stamp-day-val {
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+/* Mounted Polaroid / Postcard Artwork inside Opened Letter */
+.letter-postcard-frame {
+  position: relative;
+  background: #ffffff;
+  padding: 0.55rem 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid #dfd1b5;
+  box-shadow:
+    0 8px 22px -6px rgba(34, 26, 15, 0.22),
+    0 2px 5px rgba(34, 26, 15, 0.08);
+  margin-bottom: 1rem;
+}
+
+.letter-postcard-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9.2;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #1b3529;
+}
+
+.letter-postcard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.letter-postcard-caption {
+  margin-top: 0.45rem;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.modal-hint-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.58rem;
+}
+
+.modal-hint-text {
+  font-size: 0.79rem;
+  color: var(--ink-muted);
+}
+
+.expand-all-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.77rem;
+  font-weight: 700;
+  color: var(--xmas-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 0.1rem 0.2rem;
+}
+
+.expand-all-btn:hover {
+  color: var(--xmas-red);
+}
+
+/* ==========================================================================
+   Collapsible Letter Sections (Including New Holiday Kitchen Recipe!)
+   ========================================================================== */
+
+.accordion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.accordion-item {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--paper-rule);
+  border-left-width: 5px;
+  border-radius: 11px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(28, 45, 36, 0.04);
+}
+
+.accordion-item[hidden] {
+  display: none;
+}
+
+.accordion-item--ads { border-left-color: var(--xmas-blue); }
+.accordion-item--trust { border-left-color: var(--xmas-green); }
+.accordion-item--whatif { border-left-color: #c77f16; }
+.accordion-item--xmas { border-left-color: var(--xmas-red); }
+.accordion-item--recipe { border-left-color: #9e471c; }
+
+.accordion-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0.8rem 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.accordion-trigger:hover {
+  background: rgba(245, 236, 218, 0.5);
+}
+
+.accordion-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.accordion-emoji {
+  width: 33px;
+  height: 33px;
+  border-radius: 8px;
+  background: var(--letter-paper-warm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.accordion-titles {
+  min-width: 0;
+}
+
+.accordion-category {
+  display: block;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.08rem;
+}
+
+.accordion-item--ads .accordion-category { color: var(--xmas-blue); }
+.accordion-item--trust .accordion-category { color: var(--xmas-green); }
+.accordion-item--whatif .accordion-category { color: #a6660b; }
+.accordion-item--xmas .accordion-category { color: var(--xmas-red); }
+.accordion-item--recipe .accordion-category { color: #9e471c; }
+
+.accordion-headline {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--ink-dark);
+  line-height: 1.26;
+}
+
+.accordion-chevron {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--letter-paper-warm);
+  color: var(--ink-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.24s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.accordion-item.is-open .accordion-chevron {
+  transform: rotate(180deg);
+  background: var(--xmas-green);
+  color: #ffffff;
+}
+
+.accordion-panel {
+  display: none;
+  padding: 0 1rem 0.95rem 3.75rem;
+  color: var(--ink-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.accordion-item.is-open .accordion-panel {
+  display: block;
+}
+
+.accordion-panel p + p {
+  margin-top: 0.55rem;
+}
+
+.accordion-tip-box {
+  margin-top: 0.65rem;
+  padding: 0.65rem 0.82rem;
+  border-radius: 8px;
+  background: var(--letter-paper);
+  border: 1px dashed #cbb692;
+  font-size: 0.85rem;
+  line-height: 1.52;
+  color: var(--ink-dark);
+}
+
+.accordion-tip-box strong {
+  color: var(--xmas-green-dark);
+}
+
+.accordion-item--xmas .accordion-tip-box strong {
+  color: var(--xmas-red);
+}
+
+/* Recipe Card Formatting */
+.recipe-meta-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8c3c14;
+  background: #f8ebdc;
+  border: 1px solid #e4c6a8;
+  border-radius: 999px;
+  padding: 0.16rem 0.65rem;
+  margin-bottom: 0.6rem;
+}
+
+.recipe-subhead {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7d3612;
+  margin: 0.55rem 0 0.35rem;
+}
+
+.recipe-ingredients {
+  list-style: disc;
+  padding-left: 1.15rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.22rem 1rem;
+  font-size: 0.86rem;
+  color: var(--ink-dark);
+  margin-bottom: 0.6rem;
+}
+
+.recipe-steps {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  font-size: 0.87rem;
+  color: var(--ink-body);
+}
+
+.whatif-big-question {
+  font-family: var(--font-serif);
+  font-size: 1.03rem;
+  font-weight: 700;
+  line-height: 1.44;
+  color: var(--ink-dark);
+}
+
+.inline-copy-btn {
+  margin-top: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.52rem 0.92rem;
+  border-radius: 8px;
+  border: 1px solid var(--xmas-green);
+  background: var(--xmas-green);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.81rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inline-copy-btn:hover {
+  background: var(--xmas-green-dark);
+}
+
+.inline-copy-btn.is-copied {
+  background: var(--xmas-red);
+  border-color: var(--xmas-red);
+}
+
+.letter-signoff-footer {
+  margin-top: 1.05rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed #d5c3a1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.letter-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+.letter-signature strong {
+  font-style: normal;
+  color: var(--xmas-red);
+}
+
+.letter-wax-seal {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c83237 0%, #82161a 100%);
+  border: 2px solid #dfa84e;
+  box-shadow:
+    0 4px 10px rgba(130, 22, 26, 0.35),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.16);
+  color: var(--gold-foil);
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-7deg);
+  flex-shrink: 0;
+}
+
+/* Toast */
+.toast-container {
+  position: fixed;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 100;
+  background: var(--xmas-green-dark);
+  color: var(--snow-white);
+  border: 1.5px solid var(--gold-foil);
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+}
+
+.toast-container.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.site-footer {
+  margin-top: 2.3rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--snow-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+@media (max-width: 1024px) {
+  .calendar-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.95rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .page-shell {
+    padding: 0.8rem 0.85rem 2.8rem;
+  }
+
+  .example-showcase {
+    padding: 1.05rem 1rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .example-showcase-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.15rem;
+  }
+
+  .example-meta-row {
+    justify-content: center;
+  }
+
+  .example-door-mount {
+    width: 148px;
+  }
+
+  .calendar-board {
+    padding: 0.9rem;
+    border-radius: 18px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.68rem;
+  }
+
+  .status-divider,
+  .letter-postmark {
+    display: none;
+  }
+
+  .modal-letter-envelope {
+    padding: 7px;
+  }
+
+  .modal-letter-paper {
+    padding: 1.05rem 1rem 1.15rem;
+  }
+
+  .accordion-panel {
+    padding: 0 0.9rem 0.9rem 0.9rem;
+  }
+
+  .recipe-ingredients {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 359px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.12s !important;
+  }
+}

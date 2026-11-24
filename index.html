@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barcelona Team · 24-Day Christmas Advent Calendar</title>
+  <meta
+    name="description"
+    content="Our Barcelona Google Ads &amp; Sales 24-Day Christmas Advent Calendar: classic numbered holiday doors opening into illustrated Christmas letters with campaign refreshers, tips for earning trust with new advertisers, fun 'What If?' questions, local traditions, and easy holiday recipes."
+  />
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23a62428'/%3E%3Cpath d='M32 8L37.5 26.5L56 32L37.5 37.5L32 56L26.5 37.5L8 32L26.5 26.5L32 8Z' fill='%23e8c468'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23fdfbf7'/%3E%3C/svg%3E"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+  <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Hanging Christmas Fairy Lights Garland -->
+  <div class="christmas-garland-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 52" preserveAspectRatio="none" fill="none">
+      <path d="M0 6 Q 180 34 360 10 T 720 14 T 1080 10 T 1440 12" stroke="#2c5240" stroke-width="2.5" fill="none"/>
+      <g class="bulb-glow-a">
+        <rect x="86" y="14" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="89" cy="25" rx="5.5" ry="7.5" fill="#f6c453"/>
+        <rect x="267" y="16" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="270" cy="27" rx="5.5" ry="7.5" fill="#e0484c"/>
+        <rect x="447" y="12" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="450" cy="23" rx="5.5" ry="7.5" fill="#4aa86e"/>
+        <rect x="627" y="18" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="630" cy="29" rx="5.5" ry="7.5" fill="#5c9cf2"/>
+        <rect x="807" y="12" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="810" cy="23" rx="5.5" ry="7.5" fill="#f6c453"/>
+        <rect x="987" y="16" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="990" cy="27" rx="5.5" ry="7.5" fill="#e0484c"/>
+        <rect x="1167" y="12" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="1170" cy="23" rx="5.5" ry="7.5" fill="#4aa86e"/>
+        <rect x="1347" y="15" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="1350" cy="26" rx="5.5" ry="7.5" fill="#f6c453"/>
+      </g>
+      <g class="bulb-glow-b">
+        <rect x="177" y="20" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="180" cy="31" rx="5.5" ry="7.5" fill="#5c9cf2"/>
+        <rect x="357" y="8" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="360" cy="19" rx="5.5" ry="7.5" fill="#f6c453"/>
+        <rect x="537" y="19" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="540" cy="30" rx="5.5" ry="7.5" fill="#e0484c"/>
+        <rect x="717" y="12" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="720" cy="23" rx="5.5" ry="7.5" fill="#4aa86e"/>
+        <rect x="897" y="18" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="900" cy="29" rx="5.5" ry="7.5" fill="#5c9cf2"/>
+        <rect x="1077" y="9" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="1080" cy="20" rx="5.5" ry="7.5" fill="#f6c453"/>
+        <rect x="1257" y="18" width="6" height="5" rx="1" fill="#b88b2e"/><ellipse cx="1260" cy="29" rx="5.5" ry="7.5" fill="#e0484c"/>
+      </g>
+    </svg>
+  </div>
+
+  <aside id="admin-preview-banner" class="admin-banner" hidden aria-label="Admin Preview Controls">
+    <div class="admin-banner-inner">
+      <span>★ <strong>Preview Mode:</strong> All 24 doors unlocked via <code>?preview=true</code>.</span>
+      <button type="button" id="admin-reset-btn" class="subtle-action-btn">Reset My Doors</button>
+    </div>
+  </aside>
+
+  <div class="page-shell">
+    <header class="hero-header">
+      <div class="mistletoe-wrap">
+        <button
+          type="button"
+          id="mistletoe-btn"
+          class="holly-crest mistletoe-btn"
+          aria-label="Click the mistletoe for a funny Barcelona, holiday, or sales surprise"
+          aria-expanded="false"
+          title="Psst... click the mistletoe!"
+        >
+          <svg viewBox="0 0 96 54" fill="none" aria-hidden="true">
+            <!-- Hanging golden thread & festive red bow -->
+            <line x1="48" y1="0" x2="48" y2="12" stroke="#e8c468" stroke-width="1.8"/>
+            <path d="M48 12C42 7 35 8 36 13C37 17 43 15 48 12Z" fill="#d9383c" stroke="#e8c468" stroke-width="1"/>
+            <path d="M48 12C54 7 61 8 60 13C59 17 53 15 48 12Z" fill="#d9383c" stroke="#e8c468" stroke-width="1"/>
+            <!-- Hanging mistletoe leaves -->
+            <path d="M46 16C34 15 20 20 14 30C22 35 34 34 44 26C46 23 47 19 46 16Z" fill="#2b7a52" stroke="#e8c468" stroke-width="1.25"/>
+            <path d="M50 16C62 15 76 20 82 30C74 35 62 34 52 26C50 23 49 19 50 16Z" fill="#2b7a52" stroke="#e8c468" stroke-width="1.25"/>
+            <path d="M47 22C39 29 34 39 38 47C44 45 48 37 48 27" fill="#358f62" stroke="#e8c468" stroke-width="1.15"/>
+            <path d="M49 22C57 29 62 39 58 47C52 45 48 37 48 27" fill="#358f62" stroke="#e8c468" stroke-width="1.15"/>
+            <!-- Pearly mistletoe & red holly berries -->
+            <circle cx="48" cy="24" r="4.2" fill="#fdfbf7" stroke="#d4af53" stroke-width="1.1"/>
+            <circle cx="42.5" cy="29.5" r="3.8" fill="#fdfbf7" stroke="#d4af53" stroke-width="1.1"/>
+            <circle cx="53.5" cy="29.5" r="3.8" fill="#fdfbf7" stroke="#d4af53" stroke-width="1.1"/>
+            <circle cx="48" cy="34" r="3.5" fill="#d9383c" stroke="#fdfbf7" stroke-width="1"/>
+          </svg>
+          <span id="mistletoe-hint" class="mistletoe-hint">✦ Click the mistletoe ✦</span>
+        </button>
+
+        <div id="mistletoe-pop" class="mistletoe-pop" role="status" aria-live="polite" hidden>
+          <div class="mistletoe-pop-top">
+            <span id="mistletoe-pop-tag" class="mistletoe-pop-tag">Barcelona Winter</span>
+            <div class="mistletoe-pop-controls">
+              <button type="button" id="mistletoe-next-btn" class="mistletoe-next-btn">Another one ↻</button>
+              <button type="button" id="mistletoe-close-btn" class="mistletoe-close-btn" aria-label="Close mistletoe note">✕</button>
+            </div>
+          </div>
+          <p id="mistletoe-pop-text" class="mistletoe-pop-text"></p>
+        </div>
+      </div>
+
+      <p class="hero-eyebrow">Barcelona Hub · Google Ads &amp; Sales</p>
+
+      <h1 class="hero-title">
+        24 Days to <span>Christmas</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Open a numbered door each morning to read your illustrated Christmas letter: a simple Google Ads refresher, practical ways to earn trust with skeptical new customers, a fun "What If?" question, local traditions, and easy holiday recipes to cook at home.
+      </p>
+
+      <div class="status-bar" role="region" aria-label="Your Calendar Progress">
+        <div class="status-item">
+          <span>★</span>
+          <span id="date-status-text">Doors 1 to 24 Locked until Dec 1</span>
+        </div>
+
+        <span class="status-divider" aria-hidden="true"></span>
+
+        <div class="status-item">
+          <span>Opened:</span>
+          <span id="progress-count" class="progress-count">0 / 24</span>
+          <div class="progress-track" aria-hidden="true">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <button type="button" id="quick-reset-doors-btn" class="subtle-action-btn" hidden>
+          Close All Doors
+        </button>
+      </div>
+    </header>
+
+    <!-- Day 0 Sneak Peek Showcase (Always Open so Coworkers Know What to Expect) -->
+    <section class="example-showcase" aria-labelledby="example-showcase-heading">
+      <div class="example-showcase-inner">
+        <div class="example-context">
+          <p class="example-eyebrow">★ Day 0 · Sneak Peek · Always Unlocked</p>
+          <h2 id="example-showcase-heading" class="example-heading">
+            Curious what is inside? Open Day 0 Sneak Peek first!
+          </h2>
+          <p class="example-copy">
+            Doors 1 to 24 below stay locked until their real date in December (and stay open afterwards in case you miss a morning). Click the Day 0 Sneak Peek door on the right anytime to see what to expect: every door opens an illustrated Christmas letter where you can click only the topics you feel like reading, from a quick Google Ads refresher and tips for building trust with skeptical new customers to a daily "What If?" chat question, holiday traditions, and easy Christmas recipes.
+          </p>
+          <div class="example-meta-row">
+            <span class="example-pill">✦ Zero spoilers for Days 1 to 24</span>
+            <span class="example-pill">✦ Saved privately on your device</span>
+            <button type="button" id="reset-example-door-btn" class="subtle-action-btn" hidden>
+              Close Day 0
+            </button>
+          </div>
+        </div>
+
+        <div class="example-door-column">
+          <div id="example-door-mount" class="example-door-mount"></div>
+          <p id="example-door-caption" class="example-door-caption">Click Day 0 to open sneak peek</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Framed Illustrated Christmas Advent Calendar Board -->
+    <main class="calendar-board">
+      <section
+        id="calendar-grid"
+        class="calendar-grid"
+        aria-label="24 Christmas Advent Calendar Doors"
+      ></section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Each person's opened doors are saved privately in their own browser, so opening a door here never opens it for your teammates.</p>
+      <p>Bon Nadal · Feliz Navidad · Frohe Weihnachten · Fijne Feestdagen</p>
+    </footer>
+  </div>
+
+  <!-- Authentic Christmas Letter Modal (Candy-Cane Airmail Envelope + Postage Stamp + Postcard Illustration) -->
+  <div
+    id="day-modal-backdrop"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="modal-letter-envelope">
+      <div class="modal-letter-paper">
+        <!-- Top Airmail Bar & Door Navigation -->
+        <div class="letter-nav-bar">
+          <span id="modal-day-ribbon" class="letter-airmail-tag">★ Posta de Nadal · Door 1</span>
+
+          <div class="modal-nav-controls">
+            <button type="button" id="modal-prev-btn" class="modal-step-btn" aria-label="Previous door">
+              ← Prev
+            </button>
+            <button type="button" id="modal-next-btn" class="modal-step-btn" aria-label="Next door">
+              Next →
+            </button>
+            <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Close letter">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Christmas Letter Salutation + Postmark & Postage Stamp -->
+        <div class="letter-top-header">
+          <div class="letter-salutation-group">
+            <p class="letter-dear-line">Dear Barcelona Team,</p>
+            <h2 id="modal-title" class="modal-title">Day 1: Welcome to December!</h2>
+          </div>
+
+          <div class="letter-postal-cluster" aria-hidden="true">
+            <!-- Wavy Ink Postmark Cancellation Seal -->
+            <svg class="letter-postmark" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="38" stroke="#a62428" stroke-width="2.2" stroke-dasharray="4 2"/>
+              <circle cx="50" cy="50" r="28" stroke="#a62428" stroke-width="1.4"/>
+              <text x="50" y="45" text-anchor="middle" fill="#a62428" font-size="8.5" font-weight="800" letter-spacing="1">BARCELONA</text>
+              <text id="postmark-date-text" x="50" y="58" text-anchor="middle" fill="#a62428" font-size="9.5" font-weight="700">DEC 01</text>
+              <path d="M2 38 Q 18 32 34 38 T 66 38" stroke="#a62428" stroke-width="1.6" opacity="0.6"/>
+              <path d="M2 62 Q 18 56 34 62 T 66 62" stroke="#a62428" stroke-width="1.6" opacity="0.6"/>
+            </svg>
+
+            <!-- Perforated Holiday Postage Stamp -->
+            <div class="letter-stamp">
+              <div class="letter-stamp-inner">
+                <span class="stamp-top-label">Nadal</span>
+                <span class="stamp-star">★</span>
+                <span id="stamp-day-val" class="stamp-day-val">24c</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mounted Storybook Watercolor Illustration -->
+        <figure class="letter-postcard-frame">
+          <div class="letter-postcard-img-wrap">
+            <img id="modal-postcard-img" class="letter-postcard-img" src="" alt="" />
+          </div>
+          <figcaption id="modal-postcard-caption" class="letter-postcard-caption"></figcaption>
+        </figure>
+
+        <div class="modal-hint-row">
+          <span class="modal-hint-text">Click whichever part of today's letter you want to read:</span>
+          <button type="button" id="expand-all-btn" class="expand-all-btn">Open all 4</button>
+        </div>
+
+        <!-- 4 Vertically Stacked Collapsible Sections -->
+        <div id="accordion-stack" class="accordion-stack">
+          <!-- 1. Google Ads Refresher -->
+          <div class="accordion-item accordion-item--ads" data-section="ads">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-left">
+                <span class="accordion-emoji" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e4168" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="20" y1="20" x2="16.2" y2="16.2"></line>
+                  </svg>
+                </span>
+                <span class="accordion-titles">
+                  <span class="accordion-category">Google Ads Refresher</span>
+                  <span id="acc-ads-title" class="accordion-headline"></span>
+                </span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p id="acc-ads-body"></p>
+              <div class="accordion-tip-box">
+                <strong>When to use it:</strong> <span id="acc-ads-when"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. New Customer Trust & Upselling -->
+          <div class="accordion-item accordion-item--trust" data-section="trust">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-left">
+                <span class="accordion-emoji" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d563c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </span>
+                <span class="accordion-titles">
+                  <span class="accordion-category">New Customers &amp; Building Trust</span>
+                  <span id="acc-trust-title" class="accordion-headline"></span>
+                </span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p id="acc-trust-body"></p>
+              <div class="accordion-tip-box">
+                <strong>How to say it simply:</strong> <span id="acc-trust-say"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Daily "What If?" Question -->
+          <div class="accordion-item accordion-item--whatif" data-section="whatif">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-left">
+                <span class="accordion-emoji" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a6660b" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </span>
+                <span class="accordion-titles">
+                  <span class="accordion-category">Today's "What If?" Question</span>
+                  <span id="acc-whatif-title" class="accordion-headline"></span>
+                </span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p id="acc-whatif-question" class="whatif-big-question"></p>
+              <p id="acc-whatif-note"></p>
+              <button type="button" id="copy-whatif-btn" class="inline-copy-btn">
+                <span id="copy-whatif-label">Copy question for Slack / Teams</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Christmas Traditions & Barcelona -->
+          <div class="accordion-item accordion-item--xmas" data-section="xmas">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-left">
+                <span class="accordion-emoji" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a62428" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 19 11 14 11 20 19 4 19 10 11 5 11 12 2"></polygon>
+                    <line x1="12" y1="19" x2="12" y2="22"></line>
+                  </svg>
+                </span>
+                <span class="accordion-titles">
+                  <span id="acc-xmas-cat" class="accordion-category">Christmas &amp; Barcelona</span>
+                  <span id="acc-xmas-title" class="accordion-headline"></span>
+                </span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p id="acc-xmas-body"></p>
+              <div class="accordion-tip-box">
+                <strong>Good to know:</strong> <span id="acc-xmas-tip"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Easy Christmas Recipe (Shown on Food & Drink Days!) -->
+          <div id="acc-recipe-item" class="accordion-item accordion-item--recipe" data-section="recipe" hidden>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger-left">
+                <span class="accordion-emoji" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e471c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path>
+                    <line x1="6" y1="17" x2="18" y2="17"></line>
+                  </svg>
+                </span>
+                <span class="accordion-titles">
+                  <span class="accordion-category">Easy Christmas Recipe to Try</span>
+                  <span id="acc-recipe-title" class="accordion-headline"></span>
+                </span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <span id="acc-recipe-meta" class="recipe-meta-pill"></span>
+              <h4 class="recipe-subhead">What you need</h4>
+              <ul id="acc-recipe-ingredients" class="recipe-ingredients"></ul>
+              <h4 class="recipe-subhead">Easy steps</h4>
+              <ol id="acc-recipe-steps" class="recipe-steps"></ol>
+              <button type="button" id="copy-recipe-btn" class="inline-copy-btn">
+                <span id="copy-recipe-label">Copy recipe</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Christmas Letter Sign-Off & Crimson Wax Seal -->
+        <div class="letter-signoff-footer">
+          <p class="letter-signature">
+            Warm holiday wishes, <strong>Barcelona Christmas Post</strong> 🎄
+          </p>
+          <span class="letter-wax-seal" aria-hidden="true">BCN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-notification" class="toast-container" role="status" aria-live="polite">
+    <span id="toast-text"></span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
